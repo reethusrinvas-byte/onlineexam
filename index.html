@@ -1,8 +1,9 @@
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>NeonExam — Dark Mode Online Exam System</title>
+  <title>NeonExam — Enhanced</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,10 +16,90 @@
     </nav>
     <div class="topmeta" id="topmeta">No exam</div>
   </div>
+
   <main class="container">
     <section id="view-admin" class="view active">
       <div class="panel card">
-        <h2>Create Exam</h2>
+        <h2>Question Bank</h2>
+        <div class="row">
+          <div class="col">
+            <form id="questionForm" class="form">
+              <label>Question Text</label>
+              <textarea id="qText" rows="3" placeholder="Type the question" required></textarea>
+
+              <div class="row">
+                <div class="col">
+                  <label>Type</label>
+                  <select id="qType">
+                    <option value="mcq">Multiple Choice (single)</option>
+                    <option value="mselect">Multiple Select (multi)</option>
+                    <option value="tf">True / False</option>
+                    <option value="fill">Fill in the blanks</option>
+                    <option value="short">Short answer</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label>Difficulty</label>
+                  <select id="qDifficulty">
+                    <option value="Easy">Easy</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Hard">Hard</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label>Points</label>
+                  <input id="qPoints" type="number" min="0" value="1" required>
+                </div>
+              </div>
+
+              <div id="optionsBlock">
+                <label>Options</label>
+                <div id="optsContainer">
+                  <input class="opt" placeholder="Option 1">
+                  <input class="opt" placeholder="Option 2">
+                  <input class="opt" placeholder="Option 3">
+                  <input class="opt" placeholder="Option 4">
+                </div>
+                <label>Correct (comma or space-separated indexes for multiple select, 1-based)</label>
+                <input id="correctInput" placeholder="e.g. 1  or 1,3 for multiple">
+              </div>
+
+              <div id="tfBlock" style="display:none">
+                <label>Correct Answer</label>
+                <select id="tfCorrect">
+                  <option value="true">True</option>
+                  <option value="false">False</option>
+                </select>
+              </div>
+
+              <div class="row actions">
+                <button class="btn neon" id="addQuestion" type="submit">Add / Save Question</button>
+                <button id="resetQuestion" class="btn ghost" type="button">Reset</button>
+                <button id="importBtn" class="btn ghost" type="button">Import JSON</button>
+                <button id="exportBtn" class="btn ghost" type="button">Export JSON</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="col">
+            <label>Filters</label>
+            <div class="row">
+              <select id="filterType"><option value="any">Any type</option><option value="mcq">MCQ</option><option value="mselect">Multi</option><option value="tf">TF</option><option value="fill">Fill</option><option value="short">Short</option></select>
+              <select id="filterDiff"><option value="any">Any diff</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+            </div>
+            <div style="margin-top:8px">
+              <button id="newExamFromBank" class="btn neon">Create Exam from Bank</button>
+              <button id="clearBank" class="btn ghost">Clear Bank</button>
+            </div>
+
+            <h3 style="margin-top:10px">Bank Preview (<span id="bankCount">0</span>)</h3>
+            <div id="bankList" class="preview" style="max-height:320px;overflow:auto">—</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel card" style="margin-top:18px">
+        <h2>Exam Builder</h2>
         <form id="examForm" class="form">
           <label>Exam Title</label>
           <input id="examTitle" placeholder="e.g., Algorithms - Unit 1" required>
@@ -32,66 +113,42 @@
               <input id="examPassing" type="number" min="0" max="100" value="50" required>
             </div>
             <div class="col">
-              <label>Subject / Category</label>
-              <input id="examSubject" placeholder="e.g., Programming">
+              <label>Mode</label>
+              <select id="examMode"><option value="practice">Practice (see answers)</option><option value="test">Test (submit end)</option><option value="timed">Timed</option></select>
+            </div>
+            <div class="col">
+              <label>Negative Marking (per wrong)</label>
+              <input id="negMark" type="number" step="0.1" value="0">
             </div>
           </div>
-          <div class="actions">
-            <button class="btn neon" type="submit">Create Exam</button>
+
+          <div class="row" style="margin-top:8px">
+            <div class="col">
+              <label>Randomize question order</label>
+              <select id="randQ"><option value="no">No</option><option value="yes">Yes</option></select>
+            </div>
+            <div class="col">
+              <label>Randomize option order (MCQs)</label>
+              <select id="randOpt"><option value="no">No</option><option value="yes">Yes</option></select>
+            </div>
+            <div class="col">
+              <label>Template name (optional)</label>
+              <input id="templateName" placeholder="Save as template">
+            </div>
+          </div>
+
+          <div style="margin-top:8px" class="actions">
+            <button class="btn neon" id="createExam" type="submit">Create Exam</button>
             <button id="clearExam" class="btn ghost" type="button">Clear</button>
+            <button id="saveTemplate" class="btn ghost" type="button">Save Template</button>
           </div>
         </form>
-      </div>
-      <div class="panel card" style="margin-top:18px">
-        <h2>Add Question</h2>
-        <form id="questionForm" class="form">
-          <label>Question Text</label>
-          <textarea id="qText" rows="3" placeholder="Type the question" required></textarea>
-          <div class="row">
-            <div class="col">
-              <label>Type</label>
-              <select id="qType">
-                <option value="mcq">Multiple Choice</option>
-                <option value="tf">True / False</option>
-              </select>
-            </div>
-            <div class="col">
-              <label>Points</label>
-              <input id="qPoints" type="number" min="1" value="1" required>
-            </div>
-          </div>
-          <div id="mcqBlock">
-            <label>Options (4)</label>
-            <div class="row">
-              <input id="opt1" placeholder="Option 1" required>
-              <input id="opt2" placeholder="Option 2" required>
-            </div>
-            <div class="row">
-              <input id="opt3" placeholder="Option 3" required>
-              <input id="opt4" placeholder="Option 4" required>
-            </div>
-            <label>Correct option (1-4)</label>
-            <input id="mcqCorrect" type="number" min="1" max="4" value="1">
-          </div>
-          <div id="tfBlock" style="display:none">
-            <label>Correct Answer</label>
-            <select id="tfCorrect">
-              <option value="true">True</option>
-              <option value="false">False</option>
-            </select>
-          </div>
-          <div class="actions">
-            <button class="btn neon" id="addQuestion" type="submit">Add Question</button>
-            <button id="resetQuestion" class="btn ghost" type="button">Reset</button>
-            <div id="qCount" class="meta">No questions</div>
-          </div>
-        </form>
-      </div>
-      <div class="panel card" style="margin-top:18px">
-        <h3>Questions Preview</h3>
-        <div id="questionsList" class="preview">—</div>
+
+        <h3 style="margin-top:12px">Templates</h3>
+        <div id="templatesList" class="preview">—</div>
       </div>
     </section>
+
     <section id="view-student" class="view">
       <div class="panel card">
         <div class="exam-header">
@@ -104,6 +161,7 @@
             <button id="startExam" class="btn neon">Start Exam</button>
           </div>
         </div>
+
         <div id="quizArea" style="display:none; margin-top:14px">
           <div id="questionBox"></div>
           <div class="controls" style="margin-top:12px">
@@ -120,20 +178,26 @@
           <div id="paletteArea" class="palette" style="display:none; margin-top:12px"></div>
         </div>
       </div>
-    </section>  
+    </section>
+
     <section id="view-results" class="view">
       <div class="panel card">
-        <h2>Results</h2>
+        <h2>Results & Analytics</h2>
         <div id="resultSummary" class="preview">No results yet.</div>
         <div style="margin-top:12px">
           <button id="reviewBtn" class="btn neon">Review Last</button>
           <button id="retakeBtn" class="btn ghost">Retake (clear answers)</button>
+          <button id="exportHistory" class="btn ghost">Export History</button>
         </div>
         <div id="reviewArea" style="margin-top:12px"></div>
+        <h3 style="margin-top:12px">Student Profiles</h3>
+        <div id="profiles" class="preview"></div>
       </div>
     </section>
   </main>
-  <footer class="footer">NeonExam • Dark Mode • Week 1 Deliverable</footer>
+
+  <footer class="footer">NeonExam • Enhanced • Deliverable</footer>
+
   <script src="script.js"></script>
 </body>
 </html>
