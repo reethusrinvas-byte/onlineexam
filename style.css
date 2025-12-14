@@ -5,7 +5,7 @@ body {
   margin: 0;
   padding: 0 20px;
 }
- 
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -34,14 +34,13 @@ body {
   background: #00ff9c;
   color: #000;
 }
- 
+
 .view {
   display: none;
   padding: 20px 0;
 }
 .view.active { display: block; }
 
- 
 input, select, button {
   background: #111;
   color: #fff;
@@ -57,7 +56,6 @@ button:hover {
   cursor: pointer;
 }
 
- 
 .option {
   background: #111;
   border: 1px solid #333;
@@ -69,7 +67,6 @@ button:hover {
   color: #000;
 }
 
- 
 #authModal {
   display: none;
   position: fixed;
@@ -84,7 +81,6 @@ button:hover {
   margin: 120px auto;
 }
 
- 
 #examArea {
   display: none;
   background: #0f0f0f;
@@ -100,4 +96,35 @@ button:hover {
 .exam-nav button {
   width: auto;
   margin-right: 6px;
+}
+
+ 
+.bank-item {
+  background: #111;
+  border: 1px solid #333;
+  padding: 10px;
+  margin: 6px 0;
+  border-radius: 5px;
+}
+
+.bank-item button {
+  margin-left: 6px;
+  padding: 3px 8px;
+  font-size: 12px;
+}
+
+.bank-item button.edit {
+  background: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.bank-item button.delete {
+  background: #DC3545;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
 }
