@@ -1,130 +1,163 @@
+
 body {
   background: #0b0b0b;
-  color: #eaeaea;
-  font-family: Arial, sans-serif;
+  color: #eee;
+  font-family: Arial;
   margin: 0;
-  padding: 0 20px;
 }
 
+ 
 .navbar {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  background: #0f0f0f;
+  padding: 10px 20px;
+  background: #111;
   border-bottom: 2px solid #00ff9c;
-  padding: 12px 20px;
 }
 
 .logo {
   color: #00ff9c;
   font-weight: bold;
-  font-size: 18px;
 }
 
-.nav-tabs .tab {
-  background: transparent;
+ 
+button {
+  background: #111;
+  color: #fff;
   border: 1px solid #333;
-  color: #ccc;
-  padding: 8px 16px;
-  margin-left: 8px;
+  padding: 6px 12px;
   cursor: pointer;
+  margin: 4px;
 }
 
-.nav-tabs .tab.active {
+button:hover {
+  background: #00ff9c;
+  color: #000;
+}
+
+ 
+.tab.active {
   background: #00ff9c;
   color: #000;
 }
 
 .view {
   display: none;
-  padding: 20px 0;
+  padding: 20px;
 }
-.view.active { display: block; }
 
-input, select, button {
-  background: #111;
-  color: #fff;
+.view.active {
+  display: block;
+}
+
+ 
+.exam-card {
+  background: #222;
   border: 1px solid #333;
-  padding: 8px;
-  margin: 6px 0;
-  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
 }
 
-button:hover {
-  background: #00ff9c;
-  color: #000;
+ 
+.option {
+  background: #333;
+  border: 1px solid #444;
+  padding: 8px;
+  margin: 5px 0;
   cursor: pointer;
 }
 
-.option {
-  background: #111;
-  border: 1px solid #333;
-  padding: 10px;
-  margin: 6px 0;
-}
 .option.selected {
   background: #00ff9c;
   color: #000;
 }
 
-#authModal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.8);
-}
-.authBox {
-  background: #111;
-  border: 1px solid #00ff9c;
-  padding: 20px;
-  width: 260px;
-  margin: 120px auto;
+ 
+.correct {
+  color: #4caf50;
 }
 
-#examArea {
-  display: none;
-  background: #0f0f0f;
-  padding: 20px;
-  border: 1px solid #333;
-}
-
-#timer {
-  color: #00ff9c;
-  font-size: 18px;
-}
-
-.exam-nav button {
-  width: auto;
-  margin-right: 6px;
+.wrong {
+  color: #f44336;
 }
 
  
-.bank-item {
+#authModal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: none;
+}
+
+.authBox {
   background: #111;
-  border: 1px solid #333;
-  padding: 10px;
-  margin: 6px 0;
-  border-radius: 5px;
+  padding: 20px;
+  width: 240px;
+  margin: 120px auto;
+  border: 1px solid #00ff9c;
 }
 
-.bank-item button {
-  margin-left: 6px;
-  padding: 3px 8px;
-  font-size: 12px;
+ 
+#leaderboard {
+  margin-bottom: 20px;
 }
 
-.bank-item button.edit {
-  background: #007BFF;
-  color: #fff;
+.leader-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 10px;
+  border-bottom: 1px solid #444;
+}
+
+ 
+#palette {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.palette-btn {
+  width: 32px;
+  height: 32px;
   border: none;
-  border-radius: 3px;
+  border-radius: 4px;
+  font-weight: bold;
   cursor: pointer;
 }
 
-.bank-item button.delete {
-  background: #DC3545;
+ 
+.p-current {
+  background: #2196f3;
   color: #fff;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
 }
+
+.p-answered {
+  background: #4caf50;
+  color: #fff;
+}
+
+.p-marked {
+  background: #ff9800;
+  color: #fff;
+}
+
+.p-unanswered {
+  background: #f44336;
+  color: #fff;
+}
+ 
+#examHeader {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+#timer {
+  background: #111;
+  border: 1px solid #00ff9c;
+  padding: 6px 12px;
+  font-weight: bold;
+  color: #00ff9c;
+}
+
