@@ -1,109 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Online Exam System</title>
-<link rel="stylesheet" href="style.css">
+  <title>Online Exam System</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <nav class="navbar">
-  <div class="logo">📝 ExamSystem</div>
-  <div class="nav-tabs">
-    <button class="tab active" data-view="admin">Admin Panel</button>
-    <button class="tab" data-view="student">Student Portal</button>
+  <span class="logo">📝 Exam System</span>
+  <div>
+    <button class="tab active" data-view="admin">Admin</button>
+    <button class="tab" data-view="student">Student</button>
     <button class="tab" data-view="results">Results</button>
   </div>
+  <div>
+    <span id="sessionInfo"></span>
+    <button id="loginBtnNav" onclick="openLogin()">Login</button>
+    <button id="logoutBtnNav" onclick="logout()" style="display:none;">Logout</button>
+  </div>
 </nav>
- 
-<div class="view active" id="view-admin">
 
-<h2>Question Bank</h2>
+<div id="view-admin" class="view active"></div>
 
-<input id="qText" placeholder="Question text">
-<input id="qSubject" placeholder="Subject / Topic">
+<div id="view-student" class="view">
+  <div id="examArea">
+  <div id="examHeader">
+    <div id="timer"></div>
+  </div>
 
-<select id="qDiff">
-  <option>Easy</option>
-  <option>Medium</option>
-  <option>Hard</option>
-</select>
+  <div id="palette" class="palette"></div>
 
-<div class="opts">
-  <input class="opt" placeholder="Option 1">
-  <input class="opt" placeholder="Option 2">
-  <input class="opt" placeholder="Option 3">
-  <input class="opt" placeholder="Option 4">
+  <div id="questionBox"></div>
 </div>
 
-<input id="correctInput" placeholder="Correct option number (1-4)">
-<select id="qType">
-  <option value="MCQ">MCQ</option>
-  <option value="Multi-select">Multi-select</option>
-  <option value="True/False">True/False</option>
-  <option value="Fill">Fill</option>
-  <option value="Short">Short</option>
-</select>
 
-<button id="addQ">Add Question</button>
-
-<div id="bankList"></div>
-
-<hr>
-
-<h2>Create Exam</h2>
-
-<input id="examTitle" placeholder="Exam Title">
-<input id="examDuration" placeholder="Duration (minutes)" type="number">
-
-<select id="examMode">
-  <option value="practice">Practice Mode</option>
-  <option value="test">Test Mode</option>
-  <option value="timed">Timed Mode</option>
-</select>
-
-<label><input type="checkbox" id="randQ"> Random Questions</label>
-<label><input type="checkbox" id="randOpt"> Random Options</label>
-
-<input id="negMark" placeholder="Negative mark per wrong" type="number">
-
-<button id="createExam">Create Exam</button>
-
-</div>
- 
-<div class="view" id="view-student">
-<h2>Available Exams</h2>
-<div id="examList"></div>
-</div>
- 
-<div class="view" id="view-results">
-<h2>Result</h2>
-<div id="resultSummary"></div>
+  <div id="examList"></div>
 </div>
 
- 
+<div id="view-results" class="view">
+  
+  <h2>Results</h2>
+  <canvas id="resultChart" width="400" height="200"></canvas>
+
+  <div id="leaderboard"></div>
+  <div id="resultsList"></div>
+</div>
+
+
 <div id="authModal">
   <div class="authBox">
-    <h3>Student Login / Register</h3>
+    <h3>Login</h3>
     <input id="authUser" placeholder="Username">
-    <input id="authPass" placeholder="Password" type="password">
-    <button id="loginBtn">Login</button>
-    <button id="registerBtn">Register</button>
-    <p id="authMsg"></p>
+    <select id="authRole">
+      <option value="admin">Admin</option>
+      <option value="student">Student</option>
+    </select>
+    <button onclick="login()">Login</button>
   </div>
 </div>
-
- 
-<div id="examArea">
-  <h2 id="examTitleDisplay"></h2>
-  <div id="timer"></div>
-  <div id="questionBox"></div>
-  <div class="exam-nav">
-    <button id="prev">Prev</button>
-    <button id="next">Next</button>
-    <button id="submit">Submit</button>
-  </div>
-</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script src="script.js"></script>
 </body>
