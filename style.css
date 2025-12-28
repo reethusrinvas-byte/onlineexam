@@ -161,3 +161,228 @@ button:hover {
   color: #00ff9c;
 }
 
+ 
+#studentFormatBar {
+  margin-bottom: 10px;
+}
+
+#studentFormatBar button {
+  margin-right: 5px;
+}
+.rich-input {
+  border: 1px solid #333;
+  padding: 8px;
+  min-height: 80px;
+  background: #111;
+  color: #fff;
+}
+ 
+ 
+
+body.light {
+  background: #f4f6f8;
+  color: #111;
+}
+
+ 
+body.light #announcementBar {
+  background: #e3f2fd;
+  color: #111;
+  border-bottom: 1px solid #bbb;
+  padding: 8px;
+}
+
+ 
+body.light table {
+  background: #ffffff;
+  color: #111;
+  border-collapse: collapse;
+}
+
+body.light th,
+body.light td {
+  background: #ffffff;
+  color: #111;
+  border: 1px solid #ccc;
+}
+
+ 
+body.light #editorTools {
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 6px;
+}
+
+body.light #editorTools button {
+  background: #ffffff;
+  color: #111;
+  border: 1px solid #bbb;
+}
+
+ 
+body.light #examHeader {
+  background: #ffffff;
+  border: 1px solid #ccc;
+  padding: 6px;
+}
+
+ 
+body.light .modal .box {
+  background: #ffffff;
+  color: #111;
+  border: 1px solid #2196f3;
+}
+
+ 
+body.light #parentResults div {
+  background: #f9f9f9;
+  color: #111;
+  border: 1px solid #ccc;
+  padding: 6px;
+  margin-bottom: 4px;
+}
+
+ 
+body.light canvas {
+  background: #ffffff;
+  border: 1px solid #ccc;
+}
+
+ 
+body.light #examList {
+  background: #f4f6f8;
+}
+
+ 
+body.light #questionBox {
+  background: #ffffff;
+  color: #111;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+ 
+body.light .authBox input,
+body.light .authBox select {
+  background: #ffffff;
+  color: #111;
+  border: 1px solid #bbb;
+}
+
+ 
+body.light ::placeholder {
+  color: #666;
+}
+ 
+
+body.light .navbar {
+  background: #ffffff;
+  border-bottom: 2px solid #2196f3;
+}
+
+body.light .logo {
+  color: #2196f3;
+}
+
+body.light .view {
+  background: #f5f5f5;
+}
+
+ 
+body.light .exam-card {
+  background: #ffffff;
+  border: 1px solid #ccc;
+  color: #111;
+}
+
+ 
+body.light button {
+  background: #eaeaea;
+  color: #111;
+  border: 1px solid #bbb;
+}
+
+body.light button:hover {
+  background: #2196f3;
+  color: #fff;
+}
+
+ 
+body.light .tab.active {
+  background: #2196f3;
+  color: #fff;
+}
+
+ 
+body.light .option {
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+  color: #111;
+}
+
+body.light .option.selected {
+  background: #2196f3;
+  color: #fff;
+}
+
+ 
+body.light input,
+body.light select,
+body.light textarea {
+  background: #ffffff;
+  color: #111;
+  border: 1px solid #bbb;
+}
+
+ 
+body.light .rich-input {
+  background: #ffffff;
+  color: #111;
+  border: 1px solid #bbb;
+}
+
+ 
+body.light .authBox {
+  background: #ffffff;
+  color: #111;
+  border: 1px solid #2196f3;
+}
+
+ 
+body.light #timer {
+  background: #ffffff;
+  color: #2196f3;
+  border: 1px solid #2196f3;
+}
+
+ 
+body.light .palette-btn {
+  color: #fff;
+}
+
+body.light .p-current {
+  background: #2196f3;
+}
+
+body.light .p-answered {
+  background: #4caf50;
+}
+
+body.light .p-marked {
+  background: #ff9800;
+}
+
+body.light .p-unanswered {
+  background: #f44336;
+}
+
+ 
+body.light .leader-row {
+  border-bottom: 1px solid #ccc;
+  color: #111;
+}
+
+ 
+body.light #authModal {
+  background: rgba(0, 0, 0, 0.3);
+}
+
