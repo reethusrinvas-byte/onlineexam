@@ -8,45 +8,41 @@
 
 <nav class="navbar">
   <span class="logo">📝 Exam System</span>
+
   <div>
     <button class="tab active" data-view="admin">Admin</button>
     <button class="tab" data-view="student">Student</button>
     <button class="tab" data-view="results">Results</button>
+    <button class="tab" data-view="instructor">Instructor</button>
+
+
+    <button id="themeToggle">🌙 / ☀️</button>
   </div>
+
   <div>
     <span id="sessionInfo"></span>
     <button id="loginBtnNav" onclick="openLogin()">Login</button>
     <button id="logoutBtnNav" onclick="logout()" style="display:none;">Logout</button>
+    <button id="parentBtn" onclick="openParent()">Parent Portal</button>
   </div>
 </nav>
+
+<div id="announcementBar"></div>
 
 <div id="view-admin" class="view active"></div>
 
 <div id="view-student" class="view">
-  <div id="examArea">
-  <div id="examHeader">
-    <div id="timer"></div>
+  <div id="examArea" style="display:none;">
+    <div id="examHeader">
+      <div id="timer"></div>
+    </div>
+    <div id="questionBox"></div>
   </div>
-
-  <div id="palette" class="palette"></div>
-
-  <div id="questionBox"></div>
-</div>
-
-
   <div id="examList"></div>
 </div>
 
-<div id="view-results" class="view">
-  
-  <h2>Results</h2>
-  <canvas id="resultChart" width="400" height="200"></canvas>
-
-  <div id="leaderboard"></div>
-  <div id="resultsList"></div>
-</div>
-
-
+<div id="view-results" class="view"></div>
+<div id="view-instructor" class="view"></div>
 <div id="authModal">
   <div class="authBox">
     <h3>Login</h3>
@@ -54,12 +50,30 @@
     <select id="authRole">
       <option value="admin">Admin</option>
       <option value="student">Student</option>
+      <option value="instructor">Instructor</option>
+       
+
     </select>
     <button onclick="login()">Login</button>
   </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<div id="parentModal" class="modal" style="display:none;">
+  <div class="box">
+    <h3>Parent / Guardian Portal</h3>
 
+    <input id="parentStudent" placeholder="Enter Student Username">
+
+    <button onclick="loadParent()">View Results</button>
+
+    <div id="parentResults" style="margin-top:10px;"></div>
+
+    <button onclick="parentModal.style.display='none'">Close</button>
+  </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
+
